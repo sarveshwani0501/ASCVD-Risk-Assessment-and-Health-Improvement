@@ -1,0 +1,76 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "age": 45,
+      "bmi": 28.5,
+      "blood_pressure": 130,
+      "cholesterol": 200,
+      "glucose": 95,
+      "heart_rate": 72
+    },
+    {
+      "id": 2,
+      "age": 52,
+      "bmi": 31.2,
+      "blood_pressure": 140,
+      "cholesterol": 220,
+      "glucose": 110,
+      "heart_rate": 78
+    },
+    {
+      "id": 3,
+      "age": 37,
+      "bmi": 25.8,
+      "blood_pressure": 120,
+      "cholesterol": 180,
+      "glucose": 90,
+      "heart_rate": 70
+    },
+    {
+      "id": 4,
+      "age": 60,
+      "bmi": 29.4,
+      "blood_pressure": 150,
+      "cholesterol": 240,
+      "glucose": 130,
+      "heart_rate": 80
+    },
+    {
+      "id": 5,
+      "age": 50,
+      "bmi": 27.3,
+      "blood_pressure": 135,
+      "cholesterol": 210,
+      "glucose": 100,
+      "heart_rate": 75
+    },
+    {
+      "id": 6,
+      "age": 42,
+      "bmi": 26.5,
+      "blood_pressure": 125,
+      "cholesterol": 190,
+      "glucose": 92,
+      "heart_rate": 68
+    },
+    {
+      "id": 7,
+      "age": 55,
+      "bmi": 32.1,
+      "blood_pressure": 145,
+      "cholesterol": 230,
+      "glucose": 120,
+      "heart_rate": 82
+    },
+    {
+      "id": 8,
+      "age": 48,
+      "bmi": 30.0,
+      "blood_pressure": 138,
+      "cholesterol": 215,
+      "glucose": 105,
+      "heart_rate": 77
+    }
+  ]
+}
