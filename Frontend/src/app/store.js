@@ -26,9 +26,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        // Ignore these action types (optional)
         ignoredActions: ["auth/loginUser/fulfilled"],
-        // Ignore these field paths in state (optional)
         ignoredPaths: ["auth.user"],
       },
     }),

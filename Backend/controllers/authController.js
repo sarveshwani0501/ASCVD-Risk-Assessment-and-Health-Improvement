@@ -104,6 +104,8 @@ exports.verifyAuth = async (req, res) => {
     // Find the user by ID from the decoded token
     const user = await User.findById(decoded.id);
 
+    //
+
     if (!user) {
       return res.status(401).json({
         isAuthenticated: false,
@@ -158,7 +160,7 @@ exports.forgotPassword = async (req, res) => {
     res.status(200).json({ message: "Password reset email sent successfully" });
   } catch (err) {
     console.error("Email sending error:", err);
-    
+
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
 
