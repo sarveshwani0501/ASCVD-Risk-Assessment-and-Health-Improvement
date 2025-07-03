@@ -1,14 +1,3 @@
-// import React from "react";
-
-// function Profile() {
-//   return (
-//     <div className="p-4 ">
-
-//     </div>
-//   )
-// }
-// export default Profile;
-
 import React, { useState, useSyncExternalStore } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -29,8 +18,6 @@ import {
   selectAuthUser,
 } from "../../features/authSlice";
 const Profile = () => {
-  // Mock user data - in real implementation, this would come from backend/authentication
-
   const authUser = useSelector(selectAuthUser);
 
   const isAuthorized = useSelector(selectIsAuthenticated);
@@ -73,29 +60,6 @@ const Profile = () => {
         : "Continue current health practices",
   }));
 
-  // Mock risk assessment history
-  // const [riskAssessments, setRiskAssessments] = useState([
-  //   {
-  //     date: "2024-01-15",
-  //     riskScore: 12,
-  //     riskLevel: "Moderate",
-  //     recommendation: "Lifestyle modifications advised",
-  //   },
-  //   {
-  //     date: "2023-07-20",
-  //     riskScore: 18,
-  //     riskLevel: "High",
-  //     recommendation: "Consult with cardiologist",
-  //   },
-  //   {
-  //     date: "2023-01-10",
-  //     riskScore: 8,
-  //     riskLevel: "Low",
-  //     recommendation: "Continue current health practices",
-  //   },
-  // ]);
-  // console.log(riskAssessments);
-
   const [isEditing, setIsEditing] = useState(false);
 
   const handleProfilePicChange = (e) => {
@@ -136,7 +100,6 @@ const Profile = () => {
   return (
     <div className="container mx-auto px-4 py-8 max-w-6xl">
       <div className="bg-white shadow-lg rounded-xl overflow-hidden">
-        {/* Profile Header */}
         <div className="bg-blue-50 p-6 flex items-center justify-between">
           <div className="flex items-center space-x-6">
             <div className="relative">
@@ -176,9 +139,7 @@ const Profile = () => {
           </button>
         </div>
 
-        {/* Profile Details */}
         <div className="p-6 grid md:grid-cols-2 gap-6">
-          {/* Personal Information */}
           <div className="bg-blue-50 p-4 rounded-lg">
             <h3 className="text-lg font-semibold text-blue-800 mb-4 flex items-center">
               <User className="mr-2 text-blue-600" />
@@ -198,7 +159,6 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Medical Overview */}
           <div className="bg-blue-50 p-4 rounded-lg">
             <h3 className="text-lg font-semibold text-blue-800 mb-4 flex items-center">
               <Heart className="mr-2 text-blue-600" />
@@ -232,7 +192,6 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Risk Assessment History */}
         <div className="p-6 bg-gray-50">
           <h3 className="text-lg font-semibold text-blue-800 mb-4">
             ASCVD Risk Assessment History

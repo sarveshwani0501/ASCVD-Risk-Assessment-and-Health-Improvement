@@ -225,10 +225,10 @@ const Login = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const completeHistory = useSelector(selectCompleteHistory);
 
-  // Determine if loading based on status
+  
   const isLoading = status === "loading";
 
-  // Handle successful login
+  
   useEffect(() => {
     if (isAuthenticated) {
       completeHistory.length > 0 ?
@@ -246,7 +246,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Dispatch the loginUser action instead of direct axios call
+    
     dispatch(loginUser(formData));
   };
 
@@ -254,7 +254,7 @@ const Login = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-xl shadow-xl overflow-hidden">
-          {/* Header with logo and tagline */}
+          
           <div className="bg-gradient-to-r from-green-600 to-emerald-700 p-6 text-center">
             <div className="flex justify-center mb-3">
               <div className="h-16 w-16 rounded-full bg-white flex items-center justify-center shadow-md">
@@ -273,13 +273,13 @@ const Login = () => {
             </p>
           </div>
 
-          {/* Login Form */}
+        
           <div className="p-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-6">
               Sign in to your account
             </h2>
 
-            {/* Show error message if login failed */}
+          
             {error && (
               <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg">
                 {error}

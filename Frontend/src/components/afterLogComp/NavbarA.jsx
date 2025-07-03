@@ -36,11 +36,11 @@ export function NavbarBefore() {
   const handleLogout = async () => {
     try {
       await dispatch(logoutUser()).unwrap();
-      // Redirect to home/login page after successful logout
+      
       navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
-      // You could add error handling UI here if needed
+      
     }
   };
 

@@ -8,7 +8,6 @@ const AboutUs = () => {
   };
   return (
     <div className="bg-gradient-to-b from-green-50 to-white min-h-screen mt-16">
-      {/* Hero Section */}
       <div className="relative bg-green-700 text-white">
         <div className="absolute inset-0 opacity-20">
           <svg
@@ -30,7 +29,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Our Story */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
@@ -54,7 +52,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* What We Offer */}
       <div className="container mx-auto px-4 py-16 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-800 mb-10">
@@ -167,7 +164,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Our Technology */}
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
@@ -207,7 +203,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Tech Stack */}
       <div className="container mx-auto px-4 py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-10">
@@ -261,7 +256,6 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Contact Section */}
       <div className="bg-gray-100">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto text-center">

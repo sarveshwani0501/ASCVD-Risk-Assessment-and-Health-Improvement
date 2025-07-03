@@ -10,25 +10,21 @@ const ProtectedRoute = ({ children }) => {
   const [isChecking, setIsChecking] = useState(true);
 
   useEffect(() => {
-    // Check if the user is already authenticated in the Redux store
     if (isAuthenticated) {
       setIsChecking(false);
       return;
     }
 
-    // Check if there's an authentication session with the backend
     const checkAuthStatus = async () => {
       try {
-        // You can create a separate endpoint for this or use an existing one
         const response = await axios.get(
           "http://localhost:5000/api/auth/verify",
           {
-            withCredentials: true, // Important for sending cookies
+            withCredentials: true,
           }
         );
 
         if (response.data.isAuthenticated) {
-          // If the server confirms authentication, update Redux state
           dispatch(
             loginUser.fulfilled(
               {
@@ -41,7 +37,6 @@ const ProtectedRoute = ({ children }) => {
           );
         }
       } catch (error) {
-        // If verification fails, user remains unauthenticated
         console.log("Auth verification failed:", error);
       } finally {
         setIsChecking(false);
@@ -51,17 +46,14 @@ const ProtectedRoute = ({ children }) => {
     checkAuthStatus();
   }, [dispatch, isAuthenticated]);
 
-  // Show nothing while checking authentication status
   if (isChecking) {
-    return null; // Or a loading spinner/indicator
+    return null;
   }
 
-  // Redirect to login if not authenticated
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  // Render protected content
   return children;
 };
 

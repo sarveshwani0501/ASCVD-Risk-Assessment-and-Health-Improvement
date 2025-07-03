@@ -19,7 +19,7 @@ const ContactUs = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    //console.log("Form submitted:", formData);
     setSubmitted(true);
     setState({
       name: "",
@@ -27,13 +27,12 @@ const ContactUs = () => {
       subject: "",
       message: "",
     });
-    // In a real app, you would send this data to your backend
+
     setTimeout(() => setSubmitted(false), 3000);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 mt-16">
-      {/* Decorative Elements */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-green-200 rounded-full -mr-32 -mt-16 opacity-20"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-200 rounded-full -ml-40 -mb-40 opacity-20"></div>
 
@@ -65,7 +64,6 @@ const ContactUs = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Contact Form */}
           <div className="bg-white backdrop-filter backdrop-blur-lg bg-opacity-80 rounded-2xl shadow-xl p-8 border border-green-100 transform transition duration-500 hover:scale-105">
             {submitted ? (
               <div className="text-center py-12">
@@ -205,9 +203,8 @@ const ContactUs = () => {
             )}
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-8">
-            {/* Team Card */}
+          
             <div className="bg-white backdrop-filter backdrop-blur-lg bg-opacity-80 rounded-2xl shadow-xl p-8 border border-green-100 transform transition duration-500 hover:shadow-2xl">
               <h2 className="text-2xl font-semibold text-green-800 mb-6 flex items-center">
                 <svg
@@ -254,7 +251,6 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Contact Information Card */}
             <div className="bg-white backdrop-filter backdrop-blur-lg bg-opacity-80 rounded-2xl shadow-xl p-8 border border-green-100 transform transition duration-500 hover:shadow-2xl">
               <h2 className="text-2xl font-semibold text-green-800 mb-6 flex items-center">
                 <svg
@@ -372,7 +368,7 @@ const ContactUs = () => {
               </div>
             </div>
 
-            {/* Social Media Card */}
+           
             <div className="bg-white backdrop-filter backdrop-blur-lg bg-opacity-80 rounded-2xl shadow-xl p-8 border border-green-100 transform transition duration-500 hover:shadow-2xl">
               <h2 className="text-2xl font-semibold text-green-800 mb-6 flex items-center">
                 <svg
@@ -436,7 +432,6 @@ const ContactUs = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
         <div className="mt-16">
           <h2 className="text-3xl font-bold text-green-800 text-center mb-8 flex items-center justify-center">
             <svg

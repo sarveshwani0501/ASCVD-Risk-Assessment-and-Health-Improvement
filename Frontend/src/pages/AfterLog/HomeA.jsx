@@ -34,22 +34,18 @@ const HomeA = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // Get the user ID (in a real app, this would come from authentication context)
-  // For now, we'll hardcode it as an example
   const userId = useSelector((state) => state.auth.user?._id);
 
-  // Select data from Redux store
   const userData = useSelector(selectUserData);
   const latestAssessment = useSelector(selectLatestAssessment);
   const status = useSelector(selectHealthHistoryStatus);
   const error = useSelector(selectHealthHistoryError);
   const completeHistory = useSelector(selectCompleteHistory);
-  // Fetch health history when component mounts
+
   useEffect(() => {
     dispatch(fetchUserHealthHistory(userId));
   }, [dispatch, userId]);
 
-  // Function to format date
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);
@@ -60,12 +56,9 @@ const HomeA = () => {
     });
   };
 
-  // Calculate risk difference (mock function - replace with actual calculation)
   const calculateRiskDifference = () => {
     if (!latestAssessment) return { value: 0, improved: false };
 
-    // In a real app, you would compare with previous assessment
-    // For now, we'll mock it
     return { value: 2.3, improved: true };
   };
   if (latestAssessment && latestAssessment.risk_Score) {
@@ -77,7 +70,7 @@ const HomeA = () => {
     latestAssessment && latestAssessment.risk_Score
       ? Number(latestAssessment.risk_Score).toFixed(2)
       : 0;
-  // Get risk status based on risk score
+
   const getRiskStatus = (riskScore) => {
     if (riskScore <= 5) return "Low";
     if (riskScore < 7.5) return "Borderline";
@@ -96,7 +89,7 @@ const HomeA = () => {
     riskDiff = ((currRisk - prevRisk) / prevRisk) * 100;
     roundedRiskDiff = Math.round(riskDiff * 100) / 100;
   }
-  // parseFloat(riskDiff.toFixed(2));
+
   console.log(roundedRiskDiff);
   if (status === "failed") {
     return (
@@ -106,11 +99,9 @@ const HomeA = () => {
     );
   }
 
-  // Get risk score and related data
   const riskDifference = calculateRiskDifference();
   const riskStatus = getRiskStatus(riskScore);
 
-  // Map risk status to color
   const getRiskColor = (status) => {
     switch (status) {
       case "Low":
@@ -126,7 +117,6 @@ const HomeA = () => {
     }
   };
 
-  // Map risk status to background color
   const getRiskBgColor = (status) => {
     switch (status) {
       case "Low":
@@ -164,17 +154,15 @@ const HomeA = () => {
   const handleLogout = async () => {
     try {
       await dispatch(logoutUser()).unwrap();
-      // Redirect to home/login page after successful logout
+
       navigate("/");
     } catch (error) {
       console.error("Logout failed:", error);
-      // You could add error handling UI here if needed
     }
   };
 
   return (
     <div className="max-w-6xl mx-auto p-4 md:p-6 bg-gray-50 min-h-screen sm:my-1">
-      {/* Hero Card */}
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-sm p-6 mb-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-2">
           <div>
@@ -184,7 +172,6 @@ const HomeA = () => {
             <p className="text-gray-600">Your latest ASCVD risk assessment</p>
           </div>
           <div className="mt-4 md:mt-0 md:w-[700px] flex flex-col bg-white p-5 rounded-lg shadow-sm">
-            {/* New Risk Score Display */}
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="flex flex-col mb-3 md:mb-0">
                 <p className="text-sm text-gray-500">10-Year ASCVD Risk</p>
@@ -213,7 +200,6 @@ const HomeA = () => {
               </div>
 
               <div className="w-full md:w-1/2">
-                {/* Risk gauge visualization */}
                 <div className="h-4 bg-gray-200 rounded-full overflow-hidden w-full flex">
                   <div
                     className="h-full bg-green-500"
@@ -240,7 +226,6 @@ const HomeA = () => {
                   <span>High</span>
                 </div>
 
-                {/* Pointer to show where on gauge */}
                 <div className="relative h-6 mt-1">
                   <div
                     className="absolute bottom-5 transform -translate-x-1/2"
@@ -248,9 +233,6 @@ const HomeA = () => {
                       left: `${Math.min(Math.max(riskScore * 3.33, 5), 95)}%`,
                     }}
                   >
-                    {/* Arrow pointer pointing up */}
-
-                    {/* <div className={`w-2 h-3 ${riskBgColor}`}></div> */}
                     <div
                       className={`w-0 h-0 border-l-8 border-r-8 border-red-400 border-b-8 border-l-transparent border-r-transparent`}
                     ></div>
@@ -259,7 +241,6 @@ const HomeA = () => {
               </div>
             </div>
 
-            {/* Risk factors summary */}
             <div
               className={`mt-4 p-3 ${riskLightBgColor} rounded-lg border border-gray-200`}
             >
@@ -306,7 +287,6 @@ const HomeA = () => {
         </div>
       </div>
 
-      {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500">
           <p className="text-sm text-gray-500">Last Assessment</p>
@@ -338,9 +318,7 @@ const HomeA = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex flex-col md:flex-row gap-6 mb-8">
-        {/* Left Column */}
         <div className="flex-1">
           <h2 className="text-xl font-semibold mb-4">Key Insights</h2>
           <div className="bg-white rounded-lg shadow-sm p-5 mb-6">
@@ -374,7 +352,6 @@ const HomeA = () => {
           </div>
         </div>
 
-        {/* Right Column */}
         <div className="flex-1">
           <h2 className="text-xl font-semibold mb-4">Resources</h2>
           <div className="bg-white rounded-lg shadow-sm p-5 mb-6">

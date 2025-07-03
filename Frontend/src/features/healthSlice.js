@@ -34,21 +34,18 @@ export const addHealthAssessment = createAsyncThunk(
   }
 );
 
-// Initial state for the health history slice
 const initialState = {
   userData: null,
   completeHistory: [],
   latestAssessment: null,
-  status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+  status: "idle",
   error: null,
 };
 
-// Create the health history slice
 const healthHistorySlice = createSlice({
   name: "healthHistory",
   initialState,
   reducers: {
-    // Clear health history data (e.g., on logout)
     clearHealthHistory: (state) => {
       state.userData = null;
       state.completeHistory = [];
@@ -59,7 +56,7 @@ const healthHistorySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Handle fetchUserHealthHistory action states
+
       .addCase(fetchUserHealthHistory.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -67,7 +64,6 @@ const healthHistorySlice = createSlice({
       .addCase(fetchUserHealthHistory.fulfilled, (state, action) => {
         state.status = "succeeded";
 
-        // Store user data from the populated response
         if (action.payload.user) {
           state.userData = {
             id: action.payload.user._id,
@@ -77,11 +73,9 @@ const healthHistorySlice = createSlice({
           };
         }
 
-        // Store the complete assessment history
         if (action.payload.assessments) {
           state.completeHistory = action.payload.assessments;
 
-          // Store the latest assessment if available
           const assessments = action.payload.assessments;
           if (assessments.length > 0) {
             state.latestAssessment = assessments[assessments.length - 1];
@@ -93,7 +87,6 @@ const healthHistorySlice = createSlice({
         state.error = action.payload || "Failed to fetch health history";
       })
 
-      // Handle addHealthAssessment action states
       .addCase(addHealthAssessment.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -101,17 +94,14 @@ const healthHistorySlice = createSlice({
       .addCase(addHealthAssessment.fulfilled, (state, action) => {
         state.status = "succeeded";
 
-        // Update the complete history with the new assessment
         if (action.payload.assessments) {
           state.completeHistory = action.payload.assessments;
 
-          // Update the latest assessment
           const assessments = action.payload.assessments;
           if (assessments.length > 0) {
             state.latestAssessment = assessments[assessments.length - 1];
           }
         } else if (action.payload.assessment) {
-          // If the API only returns the new assessment, add it to the array
           state.completeHistory.push(action.payload.assessment);
           state.latestAssessment = action.payload.assessment;
         }
@@ -123,10 +113,8 @@ const healthHistorySlice = createSlice({
   },
 });
 
-// Export actions
 export const { clearHealthHistory } = healthHistorySlice.actions;
 
-// Export selectors
 export const selectHealthHistoryStatus = (state) => state.healthHistory.status;
 export const selectHealthHistoryError = (state) => state.healthHistory.error;
 export const selectUserData = (state) => state.healthHistory.userData;
@@ -139,5 +127,4 @@ export const selectUserFullName = (state) => {
   return user ? `${user.firstName} ${user.lastName}` : "";
 };
 
-// Export reducer
 export default healthHistorySlice.reducer;

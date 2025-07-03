@@ -14,9 +14,4 @@ async function runGemini(prompt) {
   return text;
 }
 
-// Example usage:
-// runGemini("Explain blockchain in simple terms")
-//   .then(console.log)
-//   .catch(console.error);
-
 module.exports = { runGemini };

@@ -1,52 +1,4 @@
-// import React, { useState } from "react";
-// import { useParams, useNavigate } from "react-router-dom";
-// import axios from "axios";
 
-// const ResetPassword = () => {
-//   const { token } = useParams();
-//   const navigate = useNavigate();
-//   const [password, setPassword] = useState("");
-//   const [message, setMessage] = useState("");
-
-//   const handleReset = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const res = await axios.post(
-//         `http://localhost:5000/api/auth/reset-password/${token}`,
-//         { password }
-//       );
-//       console.log(res);
-//       //   setMessage(res.message);
-//       setTimeout(() => navigate("/login"), 2000);
-//     } catch (err) {
-//       //   setMessage(err.res.message);
-//     }
-//   };
-//   return (
-//     <div className="p-4 max-w-md mx-auto">
-//       <h2 className="text-xl font-bold mb-4">Reset Password</h2>
-//       <form action="">
-//         <input
-//           type="password"
-//           placeholder="Enter new password"
-//           className="border p-2 w-full mb-2"
-//           value={password}
-//           onChange={(e) => setPassword(e.target.value)}
-//         />
-//         <button
-//           className="bg-green-500 text-white px-4 py-2 rounded"
-//           onClick={handleReset}
-//         >
-//           Reset Password
-//         </button>
-//       </form>
-//       {message && <p className="mt-4 text-green-600">{message}</p>}
-//     </div>
-//   );
-// };
-
-// export default ResetPassword;
 
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -63,7 +15,7 @@ const ResetPassword = () => {
   const handleReset = async (e) => {
     e.preventDefault();
 
-    // Validate password
+    
     if (password.length < 8) {
       setMessage({
         text: "Password must be at least 8 characters",
@@ -72,7 +24,7 @@ const ResetPassword = () => {
       return;
     }
 
-    // Validate password match
+    
     if (password !== confirmPassword) {
       setMessage({ text: "Passwords do not match", type: "error" });
       return;

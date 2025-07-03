@@ -1,22 +1,4 @@
-// const nodemailer = require("nodemailer");
 
-// const sendEmail = async (to, subject, text) => {
-//   const transporter = nodemailer.createTransport({
-//     service: "Gmail",
-//     auth: {
-//       user: process.env.EMAIL,
-//       pass: process.env.EMAIL_PASSWORD,
-//     },
-//   });
-
-//   await transporter.sendMail({
-//     from: process.env.EMAIL,
-//     to,
-//     subject,
-//     text,
-//   })
-// };
-// module.exports = sendEmail;
 
 const nodemailer = require("nodemailer");
 
@@ -35,18 +17,17 @@ const sendEmail = async (to, subject, resetUrl) => {
     },
   });
 
-  // Extract just the token from the URL for security reasons
+ 
   const token = resetUrl.split("/").pop();
 
-  // Company details
+  
   const companyName = process.env.COMPANY_NAME || "YourApp";
   const companyLogo =
     process.env.COMPANY_LOGO ||
     "https://via.placeholder.com/200x50?text=YourLogo";
   const supportEmail = process.env.SUPPORT_EMAIL || process.env.EMAIL;
-  const primaryColor = "#3b82f6"; // Blue color matching our UI
+  const primaryColor = "#3b82f6";
 
-  // Create HTML email template
   const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -178,7 +159,6 @@ const sendEmail = async (to, subject, resetUrl) => {
 </html>
   `;
 
-  // Send the email
   await transporter.sendMail({
     from: `"${companyName}" <${process.env.EMAIL}>`,
     to,

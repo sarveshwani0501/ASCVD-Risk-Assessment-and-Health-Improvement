@@ -18,10 +18,10 @@ exports.register = async (req, res) => {
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ message: "Email already exists" });
 
-    // Ensure password is hashed correctly
+   
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log("Hashed Password:", hashedPassword); // Debugging
+    console.log("Hashed Password:", hashedPassword); 
 
     user = new User({
       firstName,
@@ -66,7 +66,7 @@ exports.login = async (req, res) => {
       email: user.email,
       gender: user.gender,
       dateOfBirth: user.dateOfBirth,
-      // Don't include password or other sensitive fields
+     
     };
 
     res.cookie("token", token, {
@@ -88,8 +88,8 @@ exports.logout = async (req, res) => {
 
 exports.verifyAuth = async (req, res) => {
   try {
-    // Check for the JWT token in cookies
-    const token = req.cookies.token; // You're using 'token' as the cookie name
+   
+    const token = req.cookies.token; 
 
     if (!token) {
       return res.status(401).json({
@@ -98,10 +98,10 @@ exports.verifyAuth = async (req, res) => {
       });
     }
 
-    // Verify the JWT token
+    
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Find the user by ID from the decoded token
+   
     const user = await User.findById(decoded.id);
 
     //
@@ -113,7 +113,7 @@ exports.verifyAuth = async (req, res) => {
       });
     }
 
-    // Return successful auth confirmation with user data
+   
     const userData = {
       _id: user._id,
       firstName: user.firstName,
@@ -121,13 +121,13 @@ exports.verifyAuth = async (req, res) => {
       email: user.email,
       gender: user.gender,
       dateOfBirth: user.dateOfBirth,
-      // Same fields as in your login response
+      
     };
 
     return res.status(200).json({
       isAuthenticated: true,
       user: userData,
-      token, // Including token to match loginUser.fulfilled action structure
+      token, 
     });
   } catch (error) {
     console.error("Auth verification error:", error);
