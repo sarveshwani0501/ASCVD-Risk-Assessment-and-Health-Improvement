@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # 🩺 ASCVD Risk Assessment Platform
 
 This full-stack web application allows users to assess their **10-year risk of coronary heart disease (CHD)** using health metrics and a trained ML model.
