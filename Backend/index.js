@@ -22,6 +22,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api", healthRoutes);
 
+
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,

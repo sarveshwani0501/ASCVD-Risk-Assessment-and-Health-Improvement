@@ -57,7 +57,7 @@ const router = createBrowserRouter(
       <Route path="/forgotpassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:token" element={<ResetPassword />} />
     </>
-  )
+  ) 
 );
 
 createRoot(document.getElementById("root")).render(

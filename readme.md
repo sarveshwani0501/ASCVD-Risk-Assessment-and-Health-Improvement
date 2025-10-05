@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 
-# 🩺 ASCVD Risk Assessment Platform
+# 🩺 Ayuvita
 
 This full-stack web application allows users to assess their **10-year risk of coronary heart disease (CHD)** using health metrics and a trained ML model.
 
@@ -153,6 +153,6 @@ Response format:
 
 ## 📜 License
 
-This project is licensed under the [MIT License](./LICENSE) © 2025 Sarvesh Wani.
+This project is licensed under the [MIT License](./LICENSE) © 2025 Ayuvita.
 
 ---

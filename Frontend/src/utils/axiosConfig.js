@@ -1,15 +1,15 @@
 import axios from "axios";
 
-// Create an axios instance with defaults
+
 const api = axios.create({
   baseURL: "http://localhost:5000/api",
-  withCredentials: true, // This ensures cookies are sent with requests
+  withCredentials: true, 
 });
 
-// Request interceptor to handle errors or add headers
+
 api.interceptors.request.use(
   (config) => {
-    // You could add additional headers here if needed
+    
     return config;
   },
   (error) => {
