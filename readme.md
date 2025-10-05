@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # 🩺 ASCVD Risk Assessment Platform
 
